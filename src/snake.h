@@ -23,7 +23,7 @@ typedef struct {
 } Snake;
 
 Snake snake(Point[INITIAL_SIZE]);
-SnakeNode* make_node(SnakeNode*, SnakeNode*, Point);
+SnakeNode* make_node(Point);
 void add_node(Snake*, Point);
 void move(Snake*);
 void delete_snake(Snake*);

@@ -1,7 +1,6 @@
 #include "snake.h"
 
 Snake snake(Point initial[INITIAL_SIZE]) {
-    printf("ok\n");
     Snake snek = {
         .tail = NULL,
         .len = 0,
@@ -12,22 +11,27 @@ Snake snake(Point initial[INITIAL_SIZE]) {
     return snek;
 }
 
-SnakeNode* make_node(SnakeNode *prev, SnakeNode *next, Point data) {
+SnakeNode* make_node(Point data) {
     SnakeNode *node = (SnakeNode*) malloc(sizeof(SnakeNode));
-    node->prev = prev;
-    node->next = next;
+    node->prev = NULL;
+    node->next = NULL;
     node->data = data;
     return node;
 }
 
 void add_node(Snake *snek, Point p) {
     if (snek->len == 0) {
-        snek->tail = make_node(snek->tail, snek->tail, p);
+        snek->tail = make_node(p);
+        snek->tail->prev = snek->tail;
+        snek->tail->next = snek->tail;
     }
     else {
         SnakeNode *head = snek->tail->next;
-        snek->tail->next = make_node(snek->tail, head, p);
+        snek->tail->next = make_node(p);
+        snek->tail->next->prev = snek->tail;
+        snek->tail->next->next = head;
         snek->tail = snek->tail->next;
+
     }
     snek->len += 1;
 }
