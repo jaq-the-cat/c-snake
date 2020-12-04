@@ -37,9 +37,10 @@ void add_node(Snake *snek, Point p) {
 }
 
 void move(Snake *snek) {
-    SnakeNode *node = snek->tail->next;
-    for (; node != snek->tail; node = node->next) {
-        node->next->data = node->data;
+    SnakeNode *node = snek->tail;
+    for (; node != snek->tail->next; node = node->prev) {
+        printf("one\n");
+        node->data = node->prev->data;
     }
 }
 
