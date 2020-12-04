@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define INITIAL_SIZE 3
+
 typedef struct {
     short y;
     short x;
