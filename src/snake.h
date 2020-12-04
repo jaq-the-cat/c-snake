@@ -5,21 +5,22 @@
 #include <stdlib.h>
 
 typedef struct {
-    int y;
-    int x;
+    short y;
+    short x;
 } Point;
 
+typedef struct s_SnakeNode {
+    Point data;
+    struct s_SnakeNode *next;
+} SnakeNode;
+
 typedef struct {
-    Point *tail;
+    SnakeNode *tail;
     int len;
 } Snake;
 
-Snake snake() {
-    Snake snek = {
-        .tail = NULL,
-        .len = 0,
-    };
-    return snek;
-}
+Snake snake();
+SnakeNode* make_node(Point);
+void add_node(Snake*, Point);
 
 #endif
