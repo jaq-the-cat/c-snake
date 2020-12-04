@@ -26,5 +26,6 @@ SnakeNode* make_node(Point);
 void add_node(Snake*, Point);
 void move(Snake*);
 void delete_snake(Snake*);
+void debug_printf(Snake*);
 
 #endif
