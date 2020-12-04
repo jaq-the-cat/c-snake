@@ -5,5 +5,6 @@
 int main() {
     Point initial[] = {{10, 10}, {10, 11}, {10, 12}};
     Snake snek = snake(initial);
+    delete_snake(&snek);
     return 0;
 }
