@@ -7,8 +7,8 @@
 #define INITIAL_SIZE 3
 
 typedef struct {
-    short y;
-    short x;
+    int y;
+    int x;
 } Point;
 
 typedef struct s_SnakeNode {
