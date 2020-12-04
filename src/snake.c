@@ -10,7 +10,7 @@ Snake snake(Point initial[INITIAL_SIZE]) {
     return snek;
 }
 
-SnakeNode* make_node(Point data) {
+SnakeNode* make_node(SnakeNode *prev, SnakeNode *next, Point data) {
     SnakeNode *node = (SnakeNode*) malloc(sizeof(SnakeNode));
     node->data = data;
     node->next = NULL;
@@ -19,13 +19,11 @@ SnakeNode* make_node(Point data) {
 
 void add_node(Snake *snek, Point p) {
     if (snek->len == 0) {
-        snek->tail = make_node(p);
-        snek->tail->next = snek->tail;
+        snek->tail = make_node(snek->tail, snek->tail, p);
     }
     else {
         SnakeNode *head = snek->tail->next;
-        snek->tail->next = make_node(p);
-        snek->tail->next->next = head;
+        snek->tail->next = make_node(snek->tail, head, p);
         snek->tail = snek->tail->next;
     }
     snek->len += 1;
@@ -35,7 +33,7 @@ void add_node(Snake *snek, Point p) {
 
 void move(Snake *snek) {
     SnakeNode *node = snek->tail->next;
-    for (; node != snek->tail->next; node = node->next) {
+    for (; node != snek->tail; node = node->next) {
         node->next->data = node->data;
     }
 }
@@ -57,7 +55,7 @@ void debug_printf(Snake *snek) {
         SnakeNode *node = snek->tail->next;
         printf("{ ");
         do {
-            printf("(%d, %d) -> ", node->data.y, node->data.x);
+            printf("(%d, %d) <-> ", node->data.y, node->data.x);
             node = node->next;
         } while (node != snek->tail->next);
         printf("[%d, %d]  }\n", snek->tail->next->data.y,
