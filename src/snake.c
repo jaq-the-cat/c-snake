@@ -31,3 +31,15 @@ void add_node(Snake *snek, Point p) {
     snek->len += 1;
 
 }
+
+void _delete_node(Snake *snek, SnakeNode *node) {
+    if (node->next != snek->tail)
+        _delete_node(snek, node->next);
+    node->next = NULL;
+    free(node);
+}
+
+void delete_snake(Snake *snek) {
+    _delete_node(snek, snek->tail);
+    snek->len = 0;
+}
