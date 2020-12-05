@@ -4,9 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifndef INITIAL_SIZE
 #define INITIAL_SIZE 3
-#endif
 
 #define DIE 0
 #define NOTHING 1
