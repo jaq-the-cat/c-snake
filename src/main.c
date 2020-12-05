@@ -63,6 +63,8 @@ int main() {
             case 'd':
                 right(&d);
                 break;
+            case 'q':
+                goto end;
         }
         napms(100);
     }
