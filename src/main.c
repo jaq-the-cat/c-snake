@@ -11,9 +11,6 @@ typedef Point Dir;
 
 void up(Dir *d) {
     if (RIGHT(d) || LEFT(d)) {
-        d->y = 1;
-        d->x = 0;
-    } else if (RIGHT(d)) {
         d->y = -1;
         d->x = 0;
     }
