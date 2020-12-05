@@ -45,7 +45,7 @@ int snek_move(Snake *snek, int y, int x) {
             return DIE;
         node->data = node->prev->data;
     }
-    head->data = (Point) { head->data. y+ y, head->data.x + x };
+    head->data = (Point) { head->data. y + y, head->data.x + x*2 };
     return NOTHING;
 }
 
@@ -64,7 +64,7 @@ void delete_snake(Snake *snek) {
 void ncurses_display(Snake *snek) {
     SnakeNode *node = snek->tail->next;
     do {
-        mvaddstr(node->data.y, node->data.x, "@");
+        mvaddstr(node->data.y, node->data.x, "[]");
         node = node->next;
     } while (node != snek->tail->next);
 }

@@ -49,6 +49,7 @@ int main() {
     initscr();
     curs_set(0);
     nodelay(stdscr, 1);
+    noecho();
 
     while (1) {
         clear();
@@ -56,17 +57,18 @@ int main() {
         ncurses_display(&snek);
         refresh();
         switch (getch()) {
-            case KEY_LEFT:
+            case 'a':
                 left(&d);
                 break;
-            case KEY_RIGHT:
+            case 'd':
                 right(&d);
                 break;
         }
-        napms(300);
+        napms(100);
     }
 
     end:
+    echo();
     nodelay(stdscr, 0);
     curs_set(1);
     endwin();
