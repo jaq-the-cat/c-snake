@@ -36,7 +36,7 @@ void add_node(Snake *snek, Point p) {
     snek->len += 1;
 }
 
-int move(Snake *snek, int x, int y) {
+int move(Snake *snek, int y, int x) {
     SnakeNode *head = snek->tail->next;
     head->data = (Point) { head->data. y+ y, head->data.x + x };
     SnakeNode *node = snek->tail;
