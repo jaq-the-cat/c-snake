@@ -48,17 +48,26 @@ int main() {
 
     initscr();
     curs_set(0);
+    nodelay(stdscr, 1);
 
     while (1) {
         clear();
         if (snek_move(&snek, d.y, d.x) == DIE) goto end;
         ncurses_display(&snek);
         refresh();
-        right(&d);
+        switch (getch()) {
+            case KEY_LEFT:
+                left(&d);
+                break;
+            case KEY_RIGHT:
+                right(&d);
+                break;
+        }
         napms(300);
     }
 
     end:
+    nodelay(stdscr, 0);
     curs_set(1);
     endwin();
     delete_snake(&snek);
