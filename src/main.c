@@ -32,14 +32,19 @@ int main() {
     Snake snek = snake(initial);
     Dir d = {0, -1};
 
-    /*initscr();*/
+    initscr();
 
     while (1) {
+        clear();
         if (snek_move(&snek, d.y, d.x) == DIE) goto end;
+        ncurses_display(&snek);
+        refresh();
+        right(&d);
+        napms(300);
     }
 
     end:
-    /*endwin();*/
+    endwin();
     delete_snake(&snek);
     return 0;
 }

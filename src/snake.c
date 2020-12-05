@@ -1,4 +1,5 @@
 #include "snake.h"
+#include <ncurses.h>
 
 Snake snake(Point initial[INITIAL_SIZE]) {
     Snake snek = {
@@ -37,14 +38,14 @@ void add_node(Snake *snek, Point p) {
 }
 
 int snek_move(Snake *snek, int y, int x) {
-    SnakeNode *head = snek->tail->next;
-    head->data = (Point) { head->data. y+ y, head->data.x + x };
     SnakeNode *node = snek->tail;
+    SnakeNode *head = snek->tail->next;
     for (; node != snek->tail->next; node = node->prev) {
         if (node->data.x == head->data.x && node->data.y == head->data.y)
             return DIE;
         node->data = node->prev->data;
     }
+    head->data = (Point) { head->data. y+ y, head->data.x + x };
     return NOTHING;
 }
 
@@ -58,6 +59,14 @@ void _delete_node(Snake *snek, SnakeNode *node) {
 void delete_snake(Snake *snek) {
     _delete_node(snek, snek->tail);
     snek->len = 0;
+}
+
+void ncurses_display(Snake *snek) {
+    SnakeNode *node = snek->tail->next;
+    do {
+        mvaddstr(node->data.y, node->data.x, "X");
+        node = node->next;
+    } while (node != snek->tail->next);
 }
 
 void debug_printf(Snake *snek) {
