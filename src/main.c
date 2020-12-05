@@ -4,27 +4,41 @@
 #include "snake.h"
 
 typedef Point Dir;
+#define UP(D) D->y == -1 && D->x == 0
+#define DOWN(D) D->y == 1 && D->x == 0
+#define LEFT(D) D->y == 0 && D->x == -1
+#define RIGHT(D) D->y == 0 && d->x == 1
 
 void left(Dir *d) {
-    if (d->x != 0)
-        d->x = 0;
-    else
+    if (UP(d)) {
         d->x = -1;
-    if (d->y != 0)
         d->y = 0;
-    else
+    } else if (DOWN(d)) {
+        d->x = 1;
+        d->y = 0;
+    } else if (LEFT(d)) {
+        d->x = 0;
+        d->y = 1;
+    } else if (RIGHT(d)) {
+        d->x = 0;
         d->y = -1;
+    }
 }
 
 void right(Dir *d) {
-    if (d->x != 0)
-        d->x = 0;
-    else
-        d->x = 1;
-    if (d->y != 0)
+    if (UP(d)) {
         d->y = 0;
-    else
+        d->x = 1;
+    } else if (DOWN(d)) {
+        d->y = 0;
+        d->x = -1;
+    } else if (LEFT(d)) {
+        d->y = -1;
+        d->x = 0;
+    } else if (RIGHT(d)) {
         d->y = 1;
+        d->x = 0;
+    }
 }
 
 int main() {
