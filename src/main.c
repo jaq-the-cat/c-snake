@@ -8,20 +8,6 @@ int main() {
     debug_printf(&snek);
     move(&snek, -1, 0);
     debug_printf(&snek);
-    move(&snek, -1, 0);
-    debug_printf(&snek);
-    move(&snek, -1, 0);
-    debug_printf(&snek);
-    move(&snek, -1, 0);
-    debug_printf(&snek);
-    move(&snek, -1, 0);
-    debug_printf(&snek);
-    move(&snek, -1, 0);
-    debug_printf(&snek);
-    move(&snek, -1, 0);
-    debug_printf(&snek);
-    move(&snek, -1, 0);
-    debug_printf(&snek);
     delete_snake(&snek);
     return 0;
 }
