@@ -47,6 +47,7 @@ int main() {
     Dir d = {0, -1};
 
     initscr();
+    curs_set(0);
 
     while (1) {
         clear();
@@ -58,6 +59,7 @@ int main() {
     }
 
     end:
+    curs_set(1);
     endwin();
     delete_snake(&snek);
     return 0;
