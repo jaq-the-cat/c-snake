@@ -36,13 +36,13 @@ void add_node(Snake *snek, Point p) {
     snek->len += 1;
 }
 
-void move(Snake *snek) {
+void move(Snake *snek, int x, int y) {
     SnakeNode *node = snek->tail;
     for (; node != snek->tail->next; node = node->prev) {
         node->data = node->prev->data;
     }
     SnakeNode *head = snek->tail->next;
-    head->data = (Point) { head->data.y, head->data.x - 1 };
+    head->data = (Point) { head->data.y + y, head->data.x + x };
 }
 
 void _delete_node(Snake *snek, SnakeNode *node) {
