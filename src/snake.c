@@ -64,7 +64,7 @@ void delete_snake(Snake *snek) {
 void ncurses_display(Snake *snek) {
     SnakeNode *node = snek->tail->next;
     do {
-        mvaddstr(node->data.y, node->data.x, "X");
+        mvaddstr(node->data.y, node->data.x, "@");
         node = node->next;
     } while (node != snek->tail->next);
 }
