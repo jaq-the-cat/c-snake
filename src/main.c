@@ -5,7 +5,7 @@
 #include "dir.h"
 
 Point make_food(int maxx, int maxy) {
-    return (Point) {rand() % maxx, rand() % maxy};
+    return (Point) {rand() % (maxy/2)*2, rand() % maxx};
 }
 
 int main() {
@@ -53,8 +53,9 @@ int main() {
         mvaddstr(0, 0, buf);
         sprintf(buf, "%d", f.x);
         mvaddstr(1, 0, buf);
-        mvaddstr(5, f.x, "##");
-        mvaddstr(5, f.x, "##");
+        sprintf(buf, "%d", snek.tail->next->data.x);
+        mvaddstr(2, 0, buf);
+        mvaddstr(f.y, f.x, "##");
         refresh();
 
         napms(70);
