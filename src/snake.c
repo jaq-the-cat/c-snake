@@ -52,6 +52,10 @@ int snek_move(Snake *snek, int y, int x, int grow) {
     return NOTHING;
 }
 
+int is_eat(Point *head_d, Point food) {
+    return head_d->x == food.x && head_d->y == food.y;
+}
+
 void _delete_node(Snake *snek, SnakeNode *node) {
     if (node->next != snek->tail)
         _delete_node(snek, node->next);
