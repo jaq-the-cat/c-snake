@@ -29,7 +29,7 @@ typedef struct {
 Snake snake(Point[INITIAL_SIZE]);
 SnakeNode* make_node(Point);
 void add_node(Snake*, Point);
-int snek_move(Snake*, int, int);
+int snek_move(Snake*, int, int, int);
 void delete_snake(Snake*);
 void ncurses_display(Snake*);
 void debug_printf(Snake*);

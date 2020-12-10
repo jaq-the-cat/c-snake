@@ -15,11 +15,9 @@ int main() {
     noecho();
 
     while (1) {
-        switch (snek_move(&snek, d.y, d.x)) {
+        switch (snek_move(&snek, d.y, d.x, 0)) {
             case DIE:
                 goto end;
-            case GROW:
-                break;
             default:
                 break;
         };
