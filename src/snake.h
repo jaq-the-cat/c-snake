@@ -6,8 +6,9 @@
 
 #define INITIAL_SIZE 3
 
-#define DIE 0
-#define NOTHING 1
+#define NOTHING 0
+#define DIE 1
+#define GROW 2
 
 typedef struct {
     int y;

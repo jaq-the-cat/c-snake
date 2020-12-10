@@ -15,7 +15,14 @@ int main() {
     noecho();
 
     while (1) {
-        if (snek_move(&snek, d.y, d.x) == DIE) goto end;
+        switch (snek_move(&snek, d.y, d.x)) {
+            case DIE:
+                goto end;
+            case GROW:
+                break;
+            default:
+                break;
+        };
 
         switch (getch()) {
             case 'w':
