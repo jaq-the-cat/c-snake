@@ -15,7 +15,7 @@ int main() {
     noecho();
 
     while (1) {
-        switch (snek_move(&snek, d.y, d.x, 0)) {
+        switch (snek_move(&snek, d.y, d.x, (rand() % 100) < 20)) {
             case DIE:
                 goto end;
             default:
