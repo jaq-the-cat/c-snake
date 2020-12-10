@@ -15,10 +15,8 @@ int main() {
     noecho();
 
     while (1) {
-        clear();
         if (snek_move(&snek, d.y, d.x) == DIE) goto end;
-        ncurses_display(&snek);
-        refresh();
+
         switch (getch()) {
             case 'w':
                 up(&d);
@@ -35,7 +33,12 @@ int main() {
             case 'q':
                 goto end;
         }
-        napms(100);
+
+        clear();
+        ncurses_display(&snek);
+        refresh();
+
+        napms(70);
     }
 
     end:
