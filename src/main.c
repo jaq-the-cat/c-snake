@@ -2,40 +2,7 @@
 #include <stdlib.h>
 #include <ncurses.h>
 #include "snake.h"
-
-typedef Point Dir;
-#define UP(D) D->y == -1 && D->x == 0
-#define LEFT(D) D->y == 0 && D->x == -1
-#define DOWN(D) D->y == 1 && D->x == 0
-#define RIGHT(D) D->y == 0 && d->x == 1
-
-void up(Dir *d) {
-    if (RIGHT(d) || LEFT(d)) {
-        d->y = -1;
-        d->x = 0;
-    }
-}
-
-void left(Dir *d) {
-    if (UP(d) || DOWN(d)) {
-        d->y = 0;
-        d->x = -1;
-    }
-}
-
-void down(Dir *d) {
-    if (RIGHT(d) || LEFT(d)) {
-        d->y = 1;
-        d->x = 0;
-    }
-}
-
-void right(Dir *d) {
-    if (UP(d) || DOWN(d)) {
-        d->y = 0;
-        d->x = 1;
-    }
-}
+#include "dir.h"
 
 int main() {
     Point initial[] = {{10, 10}, {10, 11}, {10, 12}};
