@@ -38,6 +38,8 @@ void add_node(Snake *snek, Point p) {
 }
 
 int snek_move(Snake *snek, int y, int x, int grow) {
+    Point new;
+    if (grow) { new = snek->tail->data; }
     SnakeNode *node = snek->tail;
     SnakeNode *head = snek->tail->next;
     for (; node != snek->tail->next; node = node->prev) {
@@ -46,6 +48,7 @@ int snek_move(Snake *snek, int y, int x, int grow) {
         node->data = node->prev->data;
     }
     head->data = (Point) { head->data. y + y, head->data.x + x*2 };
+    if (grow) add_node(snek, new);
     return NOTHING;
 }
 
