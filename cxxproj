@@ -1,6 +1,7 @@
 -SOURCE
 src/main.c
 src/snake.c
+src/dir.c
 
 -LIBS
 ncurses
