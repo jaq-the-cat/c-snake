@@ -5,7 +5,7 @@
 #include "dir.h"
 
 Point make_food(int maxx, int maxy) {
-    return (Point) {rand() % (maxy/2)*2, rand() % maxx};
+    return (Point) {rand() % maxy, rand() % (maxx/2)*2};
 }
 
 int main() {
@@ -28,6 +28,7 @@ int main() {
             default:
                 break;
         };
+        if (eat) f = make_food(getmaxx(stdscr), getmaxy(stdscr));
 
         switch (getch()) {
             case 'w':
