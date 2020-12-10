@@ -48,6 +48,13 @@ int main() {
 
         clear();
         ncurses_display(&snek);
+        char buf[128];
+        sprintf(buf, "%d", f.y);
+        mvaddstr(0, 0, buf);
+        sprintf(buf, "%d", f.x);
+        mvaddstr(1, 0, buf);
+        mvaddstr(5, f.x, "##");
+        mvaddstr(5, f.x, "##");
         refresh();
 
         napms(70);
