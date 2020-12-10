@@ -4,6 +4,10 @@
 #include "snake.h"
 #include "dir.h"
 
+Point make_food(int maxx, int maxy) {
+    return (Point) {rand() % maxx, rand() % maxy};
+}
+
 int main() {
     Point initial[] = {{10, 10}, {10, 11}, {10, 12}};
     Snake snek = snake(initial);
@@ -14,8 +18,11 @@ int main() {
     nodelay(stdscr, 1);
     noecho();
 
+    Point f = make_food(getmaxx(stdscr), getmaxy(stdscr));
+
     while (1) {
-        switch (snek_move(&snek, d.y, d.x, (rand() % 100) < 20)) {
+        int eat = is_eat(&snek.tail->next->data, f);
+        switch (snek_move(&snek, d.y, d.x, eat)) {
             case DIE:
                 goto end;
             default:

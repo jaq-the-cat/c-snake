@@ -30,6 +30,7 @@ Snake snake(Point[INITIAL_SIZE]);
 SnakeNode* make_node(Point);
 void add_node(Snake*, Point);
 int snek_move(Snake*, int, int, int);
+int is_eat(Point*, Point);
 void delete_snake(Snake*);
 void ncurses_display(Snake*);
 void debug_printf(Snake*);
